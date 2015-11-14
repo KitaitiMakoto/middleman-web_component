@@ -24,10 +24,19 @@ class Middleman::WebComponent < ::Middleman::Extension
   # def manipulate_resource_list(resources)
   # end
 
-  # helpers do
-  #   def a_helper
-  #   end
-  # end
+  helpers do
+    def component_import_tag(*sources)
+      options = {
+        rel: 'import'
+      }.update(sources.extract_options!.symbolize_keys)
+      sources.flatten.inject(ActiveSupport::SafeBuffer.new) do |all, source|
+        components_dir = app.config[:components_dir] || 'components'
+        suffix = app.config[:component_suffix] || '.html'
+        url = url_for(File.join(components_dir, "#{source}#{suffix}"), relative: true)
+        all << tag(:link, {href: url}.update(options))
+      end
+    end
+  end
 end
 
 # Register extensions which can be activated

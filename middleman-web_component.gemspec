@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.name        = "middleman-web_component"
   s.version     = "0.0.1"
   s.platform    = Gem::Platform::RUBY
-  # s.authors     = ["Your Name"]
-  # s.email       = ["email@example.com"]
-  # s.homepage    = "http://example.com"
-  # s.summary     = %q{A short summary of your extension}
-  # s.description = %q{A longer description of your extension}
+  s.authors     = ["KITAITI Makoto"]
+  s.email       = ["KitaitiMakoto@gmail.com"]
+  s.homepage    = "http://www.rubydoc.info/gems/middleman-web_component"
+  s.summary     = %q{Middleman extension for Web Components}
+  s.description = %q{Middleman extension which includes a helper and after build hook for Web Components}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

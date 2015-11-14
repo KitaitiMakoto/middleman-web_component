@@ -35,4 +35,4 @@ end
 # Name param may be omited, it will default to underscored
 # version of class name
 
-# MyExtension.register(:my_extension)
+::Middleman::Extensions.register(:web_component, ::Middleman::WebComponent)

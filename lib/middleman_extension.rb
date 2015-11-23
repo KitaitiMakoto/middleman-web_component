@@ -1,1 +1,1 @@
-require 'middleman-web_component'
+require 'middleman-web_components'

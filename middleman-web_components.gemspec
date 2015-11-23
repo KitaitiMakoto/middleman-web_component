@@ -2,12 +2,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "middleman-web_component"
+  s.name        = "middleman-web_components"
   s.version     = "0.0.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["KITAITI Makoto"]
   s.email       = ["KitaitiMakoto@gmail.com"]
-  s.homepage    = "http://www.rubydoc.info/gems/middleman-web_component"
+  s.homepage    = "http://www.rubydoc.info/gems/middleman-web_components"
   s.summary     = %q{Middleman extension for Web Components}
   s.description = %q{Middleman extension which includes a helper and after build hook for Web Components}
 

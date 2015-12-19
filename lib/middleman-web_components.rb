@@ -28,10 +28,9 @@ class Middleman::WebComponents < ::Middleman::Extension
       next resource unless resource.path.start_with? options.directory
       command = "vulcanize #{resource.source_file}"
       content = `#{command}`
-      unless resource.ext == options.suffix
-        resource.destination_path = Pathname(resource.path).sub_ext(options.suffix).to_path
-      end
-      Middleman::Sitemap::StringResource.new(app.sitemap, resource.path, content)
+      resource = Middleman::Sitemap::StringResource.new(app.sitemap, resource.path, content)
+      resource.destination_path = Pathname(resource.path).sub_ext(options.suffix).to_path unless resource.ext == options.suffix
+      resource
     end
   end
 

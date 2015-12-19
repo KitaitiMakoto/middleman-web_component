@@ -1,28 +1,17 @@
-# Require core library
 require 'middleman-core'
 
-# Extension namespace
 class Middleman::WebComponents < ::Middleman::Extension
   option :suffix, '.vulcanized.html', 'Suffix appended to vulcanized files'
   option :directory, 'components', 'Directory for web components'
   option :command, 'vulcanize', 'vulcanize command such as vulcanize, /usr/local/bin/valucanize or $(npm bin)/vulcanize'
 
   def initialize(app, options_hash={}, &block)
-    # Call super to build options from the options_hash
     super
-
-    # Require libraries only when activated
-    # require 'necessary/library'
-
-    # set up your extension
-    # puts options.my_option
   end
 
   def after_configuration
-    # Do something
   end
 
-  # A Sitemap Manipulator
   def manipulate_resource_list(resources)
     resources.collect do |resource|
       next resource if resource.ignored?
@@ -48,10 +37,5 @@ class Middleman::WebComponents < ::Middleman::Extension
     end
   end
 end
-
-# Register extensions which can be activated
-# Make sure we have the version of Middleman we expect
-# Name param may be omited, it will default to underscored
-# version of class name
 
 ::Middleman::Extensions.register(:web_components, ::Middleman::WebComponents)

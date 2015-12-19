@@ -18,7 +18,7 @@ class Middleman::WebComponents < ::Middleman::Extension
   end
 
   def after_build(builder)
-    command = "cd source && vulcanize -o ../build/#{options.directory}/elements#{options.suffix} #{options.directory}/elements.html"
+    command = "vulcanize -o build/#{options.directory}/elements#{options.suffix} source/#{options.directory}/elements.html"
     logger.info "run: #{command}"
     logger.debug `#{command}`
   end

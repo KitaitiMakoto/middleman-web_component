@@ -17,19 +17,23 @@ class Middleman::WebComponents < ::Middleman::Extension
     # puts options.my_option
   end
 
-  def after_build(builder)
-    command = "vulcanize -o build/#{options.directory}/elements#{options.suffix} source/#{options.directory}/elements.html"
-    logger.info "run: #{command}"
-    logger.debug `#{command}`
-  end
-
   def after_configuration
     # Do something
   end
 
   # A Sitemap Manipulator
-  # def manipulate_resource_list(resources)
-  # end
+  def manipulate_resource_list(resources)
+    resources.collect do |resource|
+      next resource if resource.ignored?
+      next resource unless resource.path.start_with? options.directory
+      command = "vulcanize #{resource.source_file}"
+      content = `#{command}`
+      unless resource.ext == options.suffix
+        resource.destination_path = Pathname(resource.path).sub_ext(options.suffix).to_path
+      end
+      Middleman::Sitemap::StringResource.new(app.sitemap, resource.path, content)
+    end
+  end
 
   helpers do
     def component_import_tag(*sources)

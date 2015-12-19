@@ -3,7 +3,7 @@ require 'middleman-core'
 
 # Extension namespace
 class Middleman::WebComponents < ::Middleman::Extension
-  option :my_option, 'default', 'An example option'
+  option :suffix, '.vulcanized.html', 'Suffix appended to vulcanized files'
 
   def initialize(app, options_hash={}, &block)
     # Call super to build options from the options_hash
@@ -17,7 +17,7 @@ class Middleman::WebComponents < ::Middleman::Extension
   end
 
   def after_build(builder)
-    command = 'cd source && vulcanize -o ../build/components/elements.vulcanized.html components/elements.html'
+    command = "cd source && vulcanize -o ../build/components/elements#{options.suffix} components/elements.html"
     $stderr.puts "run: #{command}"
     $stderr.puts `#{command}`
   end

@@ -5,6 +5,7 @@ require 'middleman-core'
 class Middleman::WebComponents < ::Middleman::Extension
   option :suffix, '.vulcanized.html', 'Suffix appended to vulcanized files'
   option :directory, 'components', 'Directory for web components'
+  option :command, 'vulcanize', 'vulcanize command such as vulcanize, /usr/local/bin/valucanize or $(npm bin)/vulcanize'
 
   def initialize(app, options_hash={}, &block)
     # Call super to build options from the options_hash
@@ -26,7 +27,7 @@ class Middleman::WebComponents < ::Middleman::Extension
     resources.collect do |resource|
       next resource if resource.ignored?
       next resource unless resource.path.start_with? options.directory
-      command = `vulcanize #{resource.source_file}`
+      command = `#{options.command} #{resource.source_file}`
       resource = Middleman::Sitemap::StringResource.new(app.sitemap, resource.path, content)
       resource.destination_path = Pathname(resource.path).sub_ext(options.suffix).to_path unless resource.ext == options.suffix
       resource

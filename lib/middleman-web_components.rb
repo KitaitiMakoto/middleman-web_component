@@ -14,12 +14,12 @@ class Middleman::WebComponents < ::Middleman::Extension
 
     # set up your extension
     # puts options.my_option
+  end
 
-    app.after_build do |builder|
-      command = 'cd source && vulcanize -o ../build/components/elements.vulcanized.html components/elements.html'
-      $stderr.puts "run: #{command}"
-      $stderr.puts `#{command}`
-    end
+  def after_build(builder)
+    command = 'cd source && vulcanize -o ../build/components/elements.vulcanized.html components/elements.html'
+    $stderr.puts "run: #{command}"
+    $stderr.puts `#{command}`
   end
 
   def after_configuration

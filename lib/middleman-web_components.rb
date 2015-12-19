@@ -19,8 +19,8 @@ class Middleman::WebComponents < ::Middleman::Extension
 
   def after_build(builder)
     command = "cd source && vulcanize -o ../build/#{options.directory}/elements#{options.suffix} #{options.directory}/elements.html"
-    $stderr.puts "run: #{command}"
-    $stderr.puts `#{command}`
+    logger.info "run: #{command}"
+    logger.debug `#{command}`
   end
 
   def after_configuration

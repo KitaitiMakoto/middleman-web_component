@@ -5,13 +5,6 @@ class Middleman::WebComponents < ::Middleman::Extension
   option :directory, 'components', 'Directory for web components'
   option :command, 'vulcanize', 'vulcanize command such as vulcanize, /usr/local/bin/valucanize or $(npm bin)/vulcanize'
 
-  def initialize(app, options_hash={}, &block)
-    super
-  end
-
-  def after_configuration
-  end
-
   def manipulate_resource_list(resources)
     resources.collect do |resource|
       next resource if resource.ignored?

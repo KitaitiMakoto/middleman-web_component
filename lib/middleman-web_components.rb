@@ -18,13 +18,12 @@ class Middleman::WebComponents < ::Middleman::Extension
 
   helpers do
     def component_import_tag(*sources)
+      extension = app.extensions.each.find {|(name, instance)| name == :web_components}[1]
       options = {
         rel: 'import'
       }.update(sources.extract_options!.symbolize_keys)
       sources.flatten.inject(ActiveSupport::SafeBuffer.new) do |all, source|
-        components_dir = app.config[:components_dir] || 'components'
-        suffix = app.config[:component_suffix] || '.html'
-        url = url_for(File.join(components_dir, "#{source}#{suffix}"), relative: true)
+        url = url_for(File.join(extension.options.directory, "#{source}.html"), relative: true)
         all << tag(:link, {href: url}.update(options))
       end
     end

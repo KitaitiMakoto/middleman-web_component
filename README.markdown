@@ -6,7 +6,7 @@ Middleman extension which provides a helper and executes vulcanize for Web Compo
 Usage
 -----
 
-This extension does two things: providing a helper to generate link to Web Components HTML files and vulcanize Web Components HTML files on build.
+This extension does two things: providing a helper to generate link to Web Components HTML files and vulcanizing Web Components HTML files on build.
 
 ### `component_import_tag` helper ###
 

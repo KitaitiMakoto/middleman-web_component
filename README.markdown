@@ -1,7 +1,7 @@
 Middleman Web Components
 ========================
 
-Middleman extension which provides a helper and execute vulcanize for Web Components.
+Middleman extension which provides a helper and executes vulcanize for Web Components.
 
 Usage
 -----

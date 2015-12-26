@@ -5,6 +5,7 @@ Gem::Specification.new do |s|
   s.name        = "middleman-web_components"
   s.version     = "0.0.1"
   s.platform    = Gem::Platform::RUBY
+  s.license     = "LGPL"
   s.authors     = ["KITAITI Makoto"]
   s.email       = ["KitaitiMakoto@gmail.com"]
   s.homepage    = "http://www.rubydoc.info/gems/middleman-web_components"

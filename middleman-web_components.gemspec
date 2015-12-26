@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["KitaitiMakoto@gmail.com"]
   s.homepage    = "http://www.rubydoc.info/gems/middleman-web_components"
   s.summary     = %q{Middleman extension for Web Components}
-  s.description = %q{Middleman extension which includes a helper and after build hook for Web Components}
+  s.description = %q{Middleman extension which provides a helper and execute vulcanize for Web Components}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

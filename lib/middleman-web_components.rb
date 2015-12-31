@@ -22,8 +22,9 @@ class Middleman::WebComponents < ::Middleman::Extension
       options = {
         rel: 'import'
       }.update(sources.extract_options!.symbolize_keys)
+
       sources.flatten.inject(ActiveSupport::SafeBuffer.new) do |all, source|
-        url = url_for(File.join(extension.options.directory, "#{source}.html"), relative: true)
+        url = url_for(File.join('/', extension.options.directory, "#{source}.html"))
         all << tag(:link, {href: url}.update(options))
       end
     end

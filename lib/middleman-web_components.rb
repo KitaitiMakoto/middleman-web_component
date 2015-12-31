@@ -18,7 +18,7 @@ class Middleman::WebComponents < ::Middleman::Extension
 
   helpers do
     def component_import_tag(*sources)
-      extension = app.extensions.each.find {|(name, instance)| name == :web_components}[1]
+      extension = app.extensions[:web_components]
       options = {
         rel: 'import'
       }.update(sources.extract_options!.symbolize_keys)
